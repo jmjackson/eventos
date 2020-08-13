@@ -11,7 +11,13 @@ class City_model extends CI_Model{
 
   public function GetCity()
   {
-    return $this->db->get('city')->result(); 
+    return $this->db->get('city')->result();
+  }
+
+  public function GetCitybyId($id)
+  {
+    $this->db->where('Id', $id);
+  return  $this->db->get('City')->row();
   }
 
 }

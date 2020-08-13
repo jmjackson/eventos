@@ -31,7 +31,8 @@ class Welcome extends CI_Controller {
 		$cities =$this->City_model->GetCity();
 
 		$datos = array('ciudades' =>$cities , );
-
+		$this->load->view('layouts/head');
 		$this->load->view('welcome_message',$datos);
+		$this->load->view('layouts/footer');
 	}
 }

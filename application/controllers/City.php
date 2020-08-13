@@ -7,13 +7,21 @@ class City extends CI_Controller{
   {
     parent::__construct();
     //Codeigniter : Write Less Do More
+    $this->load->model(array('City_model'));
   }
 
   public function index()
   {
+    $datos = array('cities' =>$this->City_model->GetCity() , );
     $this->load->view('layouts/head');
-    $this->load->view('City/index');
-    $this->load->view('layouts/footer', $data);
+    $this->load->view('City/index',$datos);
+    $this->load->view('layouts/footer');
   }
-
+  public function details($id)
+  {
+    $datos = array('city' =>$this->City_model->GetCitybyId($id) );
+    $this->load->view('layouts/head');
+    $this->load->view('City/details',$datos);
+    $this->load->view('layouts/footer');
+  }
 }
